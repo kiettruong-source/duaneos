@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<video id="bgVideo" autoplay muted loop playsinline webkit-playsinline>
+    <source src="assets/video.mov" type="video1/quicktime" />
+</video>
+
+<div class="overlay"></div>
+
+<main class="content">
+    <button id="letterBtn" class="letter" aria-label="Open birthday letter">✉</button>
+
+    <section id="birthdayCard" class="card hidden" aria-live="polite">
+        <h1>Happy Birthday!</h1>
+        <p>Wishing you a day full of joy, love, smiles, and beautiful memories.</p>
+        <p class="note">Have the happiest birthday ever!</p>
+        <button id="closeBtn" class="close-btn">Close</button>
+    </section>
+</main>
+
+<audio id="bgMusic" loop preload="auto">
+    <source src="assets/music.mp3" type="audio/mpeg" />
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
