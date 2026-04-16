@@ -1,0 +1,252 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+#bgVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.38);
+    z-index: -1;
+}
+
+.content {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    position: relative;
+}
+
+.letter {
+    width: min(72vw, 352px);
+    /* 10% bigger than 320px */
+    aspect-ratio: 200 / 110;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    cursor: pointer;
+    transform: rotate(-3deg);
+    box-shadow:
+        2px 4px 6px rgba(0, 0, 0, 0.2),
+        0 16px 40px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: sepia(0.15);
+}
+
+.letter:hover {
+    transform: rotate(-1deg) translateY(-4px) scale(1.03);
+    box-shadow:
+        2px 8px 12px rgba(0, 0, 0, 0.22),
+        0 20px 50px rgba(0, 0, 0, 0.38);
+}
+
+.letter:active {
+    transform: rotate(-3deg) scale(0.97);
+}
+
+/* ── Card: Cozy Lo-Fi Pixel Menu ── */
+.card {
+    position: absolute;
+    width: min(92vw, 430px);
+    max-height: 80vh;
+    overflow: auto;
+    padding: 30px 24px;
+    
+    /* Re-introduce a softer paper/retro feel without harsh grids */
+    background-color: #f6ecda;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+
+    /* Softer brown borders blending into the room's wood */
+    border: 3px solid #6b4c3a;
+    border-radius: 2px;
+
+    /* Muted drop shadow */
+    box-shadow: 6px 6px 0px rgba(107, 76, 58, 0.4), 0px 10px 30px rgba(0,0,0,0.3);
+
+    text-align: center;
+    image-rendering: pixelated; /* Ensures edges don't overly blur if scaled */
+}
+
+.card h1 {
+    font-family: 'VT323', monospace;
+    margin-bottom: 16px;
+    margin-top: 10px;
+    color: #c06c84; /* Dusty rose matching the cake */
+    font-size: clamp(2.2rem, 7vw, 2.6rem);
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px rgba(107, 76, 58, 0.15);
+}
+
+.card p {
+    font-family: 'VT323', monospace;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    font-size: clamp(1.4rem, 5vw, 1.7rem);
+    color: #4a3022;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+}
+
+.note {
+    color: #c06c84;
+    font-size: clamp(1.5rem, 6vw, 1.8rem);
+    margin-top: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 0px rgba(107, 76, 58, 0.1);
+}
+
+.close-btn {
+    margin-top: 24px;
+    border: 3px solid #6b4c3a;
+    border-radius: 2px;
+    padding: 8px 26px;
+    background: #c37976;
+    color: #fdf6e3;
+    font-family: 'VT323', monospace;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px rgba(107, 76, 58, 0.5);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.close-btn:hover {
+    background: #d48c8b;
+}
+
+.close-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px rgba(107, 76, 58, 0.5);
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .card {
+        margin-top: 35vh; /* Pushed significantly lower to reveal background art */
+    }
+
+    .letter {
+        width: 77px;
+        /* 10% smaller than 86px */
+    }
+}
+
+/* ── Surprise Effects ── */
+.photo-frame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(30vw, 150px);
+    aspect-ratio: 1;
+    z-index: 5;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s;
+    pointer-events: none;
+}
+
+.photo-frame.active {
+    opacity: 1;
+    z-index: 100;
+}
+
+.surprise-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 3px solid #6b4c3a;
+    box-shadow: 4px 4px 0px rgba(107, 76, 58, 0.4);
+    display: block;
+}
+
+/* Smooth Stickers */
+.sticker {
+    position: absolute;
+    font-size: clamp(24px, 5vw, 32px);
+    z-index: 110;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+    user-select: none;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: floatSticker 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatSticker {
+    0% { margin-top: 0px; }
+    100% { margin-top: -5px; }
+}
+
+
+/* Particle Styles */
+.heart, .sparkle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 200;
+    user-select: none;
+    /* Default values to prevent CSS errors if JS fails to set them */
+    --dx: 0px;
+    --dy: 0px;
+    --dr: 0deg;
+}
+
+.heart {
+    color: #c06c84;
+    font-size: 24px;
+}
+
+.sparkle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: white;
+    filter: blur(1px);
+    box-shadow: 0 0 10px #f6ecda, 0 0 20px #c06c84;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        /* Adding calc ensures the unit is recognized if the var is just a number */
+        transform: translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px))
+        scale(0)
+        rotate(var(--dr));
+        opacity: 0;
+    }
+}

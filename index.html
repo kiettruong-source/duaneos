@@ -4,22 +4,100 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Happy Birthday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
 <video id="bgVideo" autoplay muted loop playsinline webkit-playsinline>
-    <source src="assets/video.mov" type="video1/quicktime" />
+    <source src="assets/video.mov" type="video/quicktime" />
 </video>
 
 <div class="overlay"></div>
 
 <main class="content">
-    <button id="letterBtn" class="letter" aria-label="Open birthday letter">✉</button>
+    <button id="letterBtn" class="letter" aria-label="Open birthday letter">
+        <svg viewBox="0 0 200 110" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink"
+             width="100%" height="100%">
+
+            <defs>
+                <!-- Clip bunny image into stamp square -->
+                <clipPath id="stampClip">
+                    <rect x="152" y="6" width="40" height="36" rx="2"/>
+                </clipPath>
+            </defs>
+
+            <!-- Envelope body -->
+            <rect x="2" y="2" width="196" height="106" rx="3" ry="3"
+                  fill="#f5f0e0" stroke="#c8b89a" stroke-width="1.5"/>
+            <!-- Flap -->
+            <path d="M2 2 L100 62 L198 2 Z"
+                  fill="#ede8d5" stroke="#c8b89a" stroke-width="1.5" stroke-linejoin="round"/>
+            <!-- Bottom fold lines -->
+            <path d="M2 108 L78 58 M198 108 L122 58"
+                  stroke="#c8b89a" stroke-width="1" opacity="0.6"/>
+
+            <!-- ── Bunny stamp (top right) ── -->
+            <rect x="151" y="5" width="42" height="38" rx="2"
+                  fill="none" stroke="#a07840" stroke-width="1"
+                  stroke-dasharray="2.5,1.5"/>
+            <image href="assets/stamp.png"
+                   x="152" y="6" width="40" height="36"
+                   clip-path="url(#stampClip)"
+                   preserveAspectRatio="xMidYMid slice"/>
+            <rect x="153" y="7" width="38" height="34" rx="1"
+                  fill="none" stroke="#c8b89a" stroke-width="0.5"/>
+
+            <!-- Postmark circle (top left) -->
+            <circle cx="44" cy="20" r="13"
+                    fill="none" stroke="#333" stroke-width="1" opacity="0.85"/>
+            <line x1="31" y1="20" x2="57" y2="20" stroke="#333" stroke-width="0.8" opacity="0.85"/>
+            <text x="44" y="16" text-anchor="middle"
+                  font-family="serif" font-size="5" fill="#333" opacity="0.85">18/4</text>
+            <text x="44" y="24" text-anchor="middle"
+                  font-family="serif" font-size="5" fill="#333" opacity="0.85">2003</text>
+
+            <!-- ── Wax seal stamp (center) ── -->
+            <defs>
+                <clipPath id="waxClip">
+                    <circle cx="100" cy="56" r="17"/>
+                </clipPath>
+            </defs>
+            <image href="assets/waxseal.png"
+                   x="83" y="39" width="34" height="34"
+                   clip-path="url(#waxClip)"
+                   preserveAspectRatio="xMidYMid slice"
+                   transform="rotate(-12, 100, 56)"
+                   opacity="0.93"/>
+
+
+            <!-- "To," label -->
+            <text x="30" y="72"
+                  font-family="'Dancing Script', 'Georgia', cursive"
+                  font-size="9"
+                  fill="#5a3a1a"
+                  opacity="0.7"
+                  letter-spacing="1">To,</text>
+
+            <!-- "Dưa Leo" — retro cursive name -->
+            <text x="36" y="90"
+                  font-family="'Dancing Script', 'Georgia', cursive"
+                  font-size="16"
+                  font-weight="bold"
+                  fill="#3a2010"
+                  opacity="0.88"
+                  letter-spacing="0.5">Dưa Leo</text>
+
+            <!-- Decorative underline -->
+            <line x1="36" y1="94" x2="115" y2="94"
+                  stroke="#c9a96e" stroke-width="0.8" opacity="0.6"/>
+        </svg>
+    </button>
 
     <section id="birthdayCard" class="card hidden" aria-live="polite">
         <h1>Happy Birthday!</h1>
-        <p>Wishing you a day full of joy, love, smiles, and beautiful memories.</p>
-        <p class="note">Have the happiest birthday ever!</p>
+        <p>Chúc Dưa tuổi 23 có mọi điều hạnh phúc trên đời này. Dưa sẽ là một cô gái lúc nào cũng hiền, luôn có nhiều tiền và chẳng ai làm phiền được nhó.</p>
         <button id="closeBtn" class="close-btn">Close</button>
     </section>
 </main>
