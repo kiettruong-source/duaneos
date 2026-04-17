@@ -24,17 +24,17 @@ function triggerSurprise() {
     ];
 
     // Calculate positions relative to the center
-    // Fine-tuned: Top 2 moved ANOTHER 15% up.
+    // Fine-tuned: All 4 moved 10% MORE to the outside.
     const positions = isMobile ? [
-        { x: -118, y: -198, r: -15 }, // Top Left
-        { x: 118, y: -205, r: 12 },   // Top Right
-        { x: -115, y: 160, r: -8 },   // Bottom Left
-        { x: 121, y: 165, r: 18 }     // Bottom Right
+        { x: -130, y: -198, r: -15 }, // Top Left
+        { x: 130, y: -205, r: 12 },   // Top Right
+        { x: -127, y: 160, r: -8 },   // Bottom Left
+        { x: 133, y: 165, r: 18 }     // Bottom Right
     ] : [
-        { x: -247, y: -356, r: -15 }, // Top Left
-        { x: 247, y: -383, r: 12 },   // Top Right
-        { x: -241, y: 240, r: -8 },   // Bottom Left
-        { x: 252, y: 250, r: 18 }     // Bottom Right
+        { x: -272, y: -356, r: -15 }, // Top Left
+        { x: 272, y: -383, r: 12 },   // Top Right
+        { x: -265, y: 240, r: -8 },   // Bottom Left
+        { x: 277, y: 250, r: 18 }     // Bottom Right
     ];
 
     const stickerPool = ['🍓', '⭐', '💖', '✨', '🌸', '🎁', '🎈', '🍰'];
