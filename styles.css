@@ -154,14 +154,16 @@ body {
 
 @media (max-width: 480px) {
     .card {
-        margin-top: 35vh; /* Pushed significantly lower to reveal background art */
+        margin-top: 5vh; /* Reduced from 35vh to prevent overlap with photos */
+        padding: 24px 16px;
     }
 
     .letter {
-        width: 77px;
-        /* 10% smaller than 86px */
+        width: 140px; /* Significantly larger for better visibility on mobile */
+        /* Increased from 77px */
     }
 }
+
 
 /* ── Surprise Effects ── */
 .photo-frame {

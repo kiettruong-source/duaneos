@@ -14,6 +14,8 @@ async function startMusic() {
 
 
 function triggerSurprise() {
+    const isMobile = window.innerWidth < 480;
+    
     const photos = [
         'assets/photo1.jpg',
         'assets/photo2.jpg',
@@ -22,9 +24,15 @@ function triggerSurprise() {
     ];
 
     // Calculate positions relative to the center
-    const positions = [
-        { x: -160, y: -200, r: -15 }, // Top Left (adjusted slightly down)
-        { x: 160, y: -245, r: 12 },   // Top Right (moved higher)
+    // On mobile, we reduce the offsets significantly so photos stay on screen
+    const positions = isMobile ? [
+        { x: -90, y: -130, r: -15 }, // Top Left
+        { x: 90, y: -135, r: 12 },   // Top Right
+        { x: -85, y: 140, r: -8 },   // Bottom Left
+        { x: 90, y: 145, r: 18 }     // Bottom Right
+    ] : [
+        { x: -160, y: -200, r: -15 }, // Top Left
+        { x: 160, y: -245, r: 12 },   // Top Right
         { x: -155, y: 155, r: -8 },   // Bottom Left
         { x: 165, y: 160, r: 18 }     // Bottom Right
     ];
