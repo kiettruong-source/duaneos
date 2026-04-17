@@ -83,7 +83,7 @@ body {
 /* ── Card: Cozy Lo-Fi Pixel Menu ── */
 .card {
     position: absolute;
-    top: 42%; /* Moved down by 30% from original 12% */
+    top: 32%; /* Moved up by 10% from 42% */
     left: 50%;
     transform: translateX(-50%);
     width: min(92vw, 430px);
@@ -165,7 +165,7 @@ body {
 
 @media (max-width: 600px) {
     .card {
-        top: 38%; /* Moved down by 30% from original 8% */
+        top: 28%; /* Moved up by 10% from 38% */
         transform: translateX(-50%);
         padding: 24px 16px;
     }
