@@ -24,17 +24,17 @@ function triggerSurprise() {
     ];
 
     // Calculate positions relative to the center
-    // On mobile, we reduce the offsets significantly so photos stay on screen
+    // Increased offsets to push photos further out to the corners
     const positions = isMobile ? [
-        { x: -90, y: -130, r: -15 }, // Top Left
-        { x: 90, y: -135, r: 12 },   // Top Right
-        { x: -85, y: 140, r: -8 },   // Bottom Left
-        { x: 90, y: 145, r: 18 }     // Bottom Right
+        { x: -110, y: -160, r: -15 }, // Top Left
+        { x: 110, y: -165, r: 12 },   // Top Right
+        { x: -105, y: 170, r: -8 },   // Bottom Left
+        { x: 110, y: 175, r: 18 }     // Bottom Right
     ] : [
-        { x: -160, y: -200, r: -15 }, // Top Left
-        { x: 160, y: -245, r: 12 },   // Top Right
-        { x: -155, y: 155, r: -8 },   // Bottom Left
-        { x: 165, y: 160, r: 18 }     // Bottom Right
+        { x: -220, y: -260, r: -15 }, // Top Left
+        { x: 220, y: -285, r: 12 },   // Top Right
+        { x: -215, y: 225, r: -8 },   // Bottom Left
+        { x: 225, y: 230, r: 18 }     // Bottom Right
     ];
 
     const stickerPool = ['🍓', '⭐', '💖', '✨', '🌸', '🎁', '🎈', '🍰'];
@@ -138,3 +138,47 @@ closeBtn.addEventListener("click", () => {
     const existingFrames = document.querySelectorAll('.photo-frame');
     existingFrames.forEach(frame => frame.remove());
 });
+
+// --- Dynamic URL Themes ---
+
+function applyUrlTheme() {
+    const params = new URLSearchParams(window.location.search);
+    const color = params.get('color')?.toLowerCase();
+    
+    const themes = {
+        'blue': { 
+            main: '#a2d2ff', 
+            accent: '#3d85c6', 
+            gStart: 'rgba(162, 210, 255, 0.25)', 
+            gEnd: 'rgba(61, 133, 198, 0.35)' 
+        },
+        'green': { 
+            main: '#b7e4c7', 
+            accent: '#2d6a4f', 
+            gStart: 'rgba(183, 228, 199, 0.25)', 
+            gEnd: 'rgba(45, 106, 79, 0.35)' 
+        },
+        'sunset': { 
+            main: '#ffcb91', 
+            accent: '#d35400', 
+            gStart: 'rgba(255, 203, 145, 0.25)', 
+            gEnd: 'rgba(211, 84, 0, 0.35)' 
+        }
+    };
+    
+    if (color && themes[color]) {
+        const root = document.documentElement;
+        const theme = themes[color];
+        
+        root.style.setProperty('--theme-color', theme.main);
+        root.style.setProperty('--accent-color', theme.accent);
+        root.style.setProperty('--gradient-start', theme.gStart);
+        root.style.setProperty('--gradient-end', theme.gEnd);
+        
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+        if (metaTheme) metaTheme.setAttribute('content', theme.main);
+    }
+}
+
+// Run theme check on load
+applyUrlTheme();
