@@ -24,15 +24,15 @@ function triggerSurprise() {
     ];
 
     // Calculate positions relative to the center
-    // Fine-tuned: All 4 moved 10% MORE to the outside.
+    // Fine-tuned: Top 2 moved ANOTHER 10% up.
     const positions = isMobile ? [
-        { x: -130, y: -198, r: -15 }, // Top Left
-        { x: 130, y: -205, r: 12 },   // Top Right
+        { x: -130, y: -218, r: -15 }, // Top Left
+        { x: 130, y: -226, r: 12 },   // Top Right
         { x: -127, y: 160, r: -8 },   // Bottom Left
         { x: 133, y: 165, r: 18 }     // Bottom Right
     ] : [
-        { x: -272, y: -356, r: -15 }, // Top Left
-        { x: 272, y: -383, r: 12 },   // Top Right
+        { x: -272, y: -392, r: -15 }, // Top Left
+        { x: 272, y: -421, r: 12 },   // Top Right
         { x: -265, y: 240, r: -8 },   // Bottom Left
         { x: 277, y: 250, r: 18 }     // Bottom Right
     ];
