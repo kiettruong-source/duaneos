@@ -24,17 +24,17 @@ function triggerSurprise() {
     ];
 
     // Calculate positions relative to the center
-    // Increased offsets to push photos further out to the corners
+    // Adjusted to "hug" the edges of the birthday card
     const positions = isMobile ? [
-        { x: -110, y: -160, r: -15 }, // Top Left
-        { x: 110, y: -165, r: 12 },   // Top Right
-        { x: -105, y: 170, r: -8 },   // Bottom Left
-        { x: 110, y: 175, r: 18 }     // Bottom Right
+        { x: -100, y: -140, r: -15 }, // Top Left
+        { x: 100, y: -145, r: 12 },   // Top Right
+        { x: -95, y: 150, r: -8 },    // Bottom Left
+        { x: 100, y: 155, r: 18 }     // Bottom Right
     ] : [
-        { x: -220, y: -260, r: -15 }, // Top Left
-        { x: 220, y: -285, r: 12 },   // Top Right
-        { x: -215, y: 225, r: -8 },   // Bottom Left
-        { x: 225, y: 230, r: 18 }     // Bottom Right
+        { x: -210, y: -240, r: -15 }, // Top Left
+        { x: 210, y: -255, r: 12 },   // Top Right
+        { x: -200, y: 210, r: -8 },   // Bottom Left
+        { x: 210, y: 220, r: 18 }     // Bottom Right
     ];
 
     const stickerPool = ['🍓', '⭐', '💖', '✨', '🌸', '🎁', '🎈', '🍰'];
